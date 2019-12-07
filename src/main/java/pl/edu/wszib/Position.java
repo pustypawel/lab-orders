@@ -21,6 +21,14 @@ public class Position {
         }
     }
 
+    public void setQuantity(Integer newQuantity) {
+        if (newQuantity > 0) {
+            quantity = newQuantity;
+        } else {
+            throw new IllegalArgumentException("quantity has to be greater than 0. quantity = " + quantity);
+        }
+    }
+
     public Integer getQuantity() {
         return quantity;
     }

@@ -73,6 +73,12 @@ public class Order {
         position.decreaseQuantity();
     }
 
+    public void setPositionQuantity(int line, Integer newQuantity) {
+        validateLine(line);
+        Position position = positions.get(line - 1);
+        position.setQuantity(newQuantity);
+    }
+
     private void validateIsModifiable(int line) {
         validateIsNotClosed();
         validateLine(line);

@@ -139,4 +139,25 @@ public class TddTest {
         // then: we won't be able to decrease position quantity and exception should be thrown
     }
 
+    @Test
+    public void shouldBeAbleToSetPositionQuantity() {
+        // given: have have and Order which 1 position which has quantity = 2
+        Order order = OrderSample.sampleWithQuantity(2);
+        Integer newQuantity = 10;
+        // when: we set position quantity
+        order.setPositionQuantity(1, newQuantity);
+        // then: position quantity should be equal to newQuantity
+        Integer positionQuantity = order.getPositionQuantity(1);
+        assertEquals(newQuantity, positionQuantity);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldNotBeAbleToSetPositionQuantityLessThan1() {
+        // given: have have and Order which 1 position which has quantity = 2
+        Order order = OrderSample.sampleWithQuantity(2);
+        Integer newQuantity = 0;
+        // when: we set position quantity
+        order.setPositionQuantity(1, newQuantity);
+        // then: exception should be thrown
+    }
 }

@@ -85,21 +85,25 @@ public class TddTest {
         assertEquals("Niepoprawna suma zamówienia", new BigDecimal(31).setScale(2, RoundingMode.HALF_UP), sum);
     }
 
-    @Test
-    @Ignore
-    public void shouldBeAbleCloseOrder() {
-        fail();
-    }
-
-    @Test
-    @Ignore
+    @Test(expected = IllegalStateException.class)
     public void shouldNotBeAbleToAddPositionToClosedOrder() {
-        fail();
+        // given: we have an Order
+        Order order = OrderSample.sample();
+        // when: we close the order
+        order.close();
+        // then: we won't be able to modify the order
+        order.addPosition(PositionSamples.sample());
+        // exception should be thrown
     }
 
-    @Test
-    @Ignore
+    @Test(expected = IllegalStateException.class)
     public void shouldNotBeAbleToRemovePositionToClosedOrder() {
-        fail();
+        // given: we have an Order
+        Order order = OrderSample.sample();
+        // when: we close the order
+        order.close();
+        // then: we won't be able to modify the order
+        order.removePosition(2);
+        // exception should be thrown
     }
 }

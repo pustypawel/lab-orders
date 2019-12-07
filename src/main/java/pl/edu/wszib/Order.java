@@ -7,8 +7,10 @@ import java.util.List;
 public class Order {
 
     private final List<Position> positions = new ArrayList<>();
+    private boolean isClosed;
 
     public void addPosition(Position position) {
+        validateIsNotClosed();
         positions.add(position);
     }
 
@@ -17,8 +19,15 @@ public class Order {
     }
 
     public void removePosition(int line) {
+        validateIsNotClosed();
         validateLine(line);
         positions.remove(line - 1);
+    }
+
+    private void validateIsNotClosed() {
+        if (isClosed) {
+            throw new IllegalStateException("Order is already closed");
+        }
     }
 
     private void validateLine(int line) {
@@ -39,5 +48,13 @@ public class Order {
             sum = sum.add(price.multiply(new BigDecimal(quantity)));
         }
         return sum;
+    }
+
+    public void close() {
+        isClosed = true;
+    }
+
+    public boolean isClosed() {
+        return isClosed;
     }
 }

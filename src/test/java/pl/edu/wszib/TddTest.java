@@ -160,4 +160,6 @@ public class TddTest {
         order.setPositionQuantity(1, newQuantity);
         // then: exception should be thrown
     }
+
+    // TODO add new functions to our system
 }

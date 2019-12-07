@@ -1,12 +1,16 @@
 package pl.edu.wszib;
 
 public class Position {
-    private final Integer quantity;
+    private Integer quantity;
     private final Item item;
 
     public Position(Integer quantity, Item item) {
         this.quantity = quantity;
         this.item = item;
+    }
+
+    public void increaseQuantity() {
+        quantity = quantity + 1;
     }
 
     public Integer getQuantity() {

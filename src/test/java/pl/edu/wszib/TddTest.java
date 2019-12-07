@@ -106,4 +106,17 @@ public class TddTest {
         order.removePosition(2);
         // exception should be thrown
     }
+
+    @Test
+    public void shouldBeAbleToIncreasePositionQuantity() {
+        // given: have have and Order which 1 position which has quantity = 1
+        Order order = OrderSample.sampleWithQuantity(1);
+        // when: we increase position quantity
+        order.increasePositionQuantity(1);
+        // then: position quantity should be 2
+        Integer positionQuantity = order.getPositionQuantity(1);
+        assertEquals(2, positionQuantity.intValue());
+    }
+
+    // TODO: increase/decrease/set position quantity tests!!!!!!!!!!!!!!!!!
 }

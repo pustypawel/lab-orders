@@ -57,4 +57,13 @@ public class Order {
     public boolean isClosed() {
         return isClosed;
     }
+
+    public void increasePositionQuantity(int line) {
+        Position position = positions.get(line - 1);
+        position.increaseQuantity();
+    }
+
+    public Integer getPositionQuantity(int line) {
+        return positions.get(line - 1).getQuantity();
+    }
 }

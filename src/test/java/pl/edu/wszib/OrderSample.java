@@ -6,4 +6,10 @@ public class OrderSample {
         order.addPosition(PositionSamples.sample());
         return order;
     }
+
+    public static Order sampleWithQuantity(int quantity) {
+        Order order = new Order();
+        order.addPosition(PositionSamples.sampleWithQuantity(quantity));
+        return order;
+    }
 }

@@ -19,8 +19,7 @@ public class Order {
     }
 
     public void removePosition(int line) {
-        validateIsNotClosed();
-        validateLine(line);
+        validateIsModifiable(line);
         positions.remove(line - 1);
     }
 
@@ -59,11 +58,23 @@ public class Order {
     }
 
     public void increasePositionQuantity(int line) {
+        validateIsModifiable(line);
         Position position = positions.get(line - 1);
         position.increaseQuantity();
     }
 
     public Integer getPositionQuantity(int line) {
         return positions.get(line - 1).getQuantity();
+    }
+
+    public void decreasePositionQuantity(int line) {
+        validateIsModifiable(line);
+        Position position = positions.get(line - 1);
+        position.decreaseQuantity();
+    }
+
+    private void validateIsModifiable(int line) {
+        validateIsNotClosed();
+        validateLine(line);
     }
 }

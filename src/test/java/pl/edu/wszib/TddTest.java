@@ -4,6 +4,7 @@ import org.junit.*;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.function.BiFunction;
 
 import static org.junit.Assert.*;
 
@@ -118,5 +119,24 @@ public class TddTest {
         assertEquals(2, positionQuantity.intValue());
     }
 
-    // TODO: increase/decrease/set position quantity tests!!!!!!!!!!!!!!!!!
+    @Test
+    public void shouldBeAbleToDecreasePositionQuantity() {
+        // given: have have and Order which 1 position which has quantity = 2
+        Order order = OrderSample.sampleWithQuantity(2);
+        // when: we decrease position quantity
+        order.decreasePositionQuantity(1);
+        // then: position quantity should be 1
+        Integer positionQuantity = order.getPositionQuantity(1);
+        assertEquals(1, positionQuantity.intValue());
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void shouldNotBeAbleToDecreasePositionQuantityTo0() {
+        // given: have have and Order which 1 position which has quantity = 1
+        Order order = OrderSample.sampleWithQuantity(1);
+        // when: we decrease position quantity
+        order.decreasePositionQuantity(1);
+        // then: we won't be able to decrease position quantity and exception should be thrown
+    }
+
 }

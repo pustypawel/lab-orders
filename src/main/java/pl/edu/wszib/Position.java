@@ -13,6 +13,14 @@ public class Position {
         quantity = quantity + 1;
     }
 
+    public void decreaseQuantity() {
+        if (quantity > 1) {
+            quantity = quantity - 1;
+        } else {
+            throw new IllegalStateException("quantity has to be greater than 1. quantity = " + quantity);
+        }
+    }
+
     public Integer getQuantity() {
         return quantity;
     }

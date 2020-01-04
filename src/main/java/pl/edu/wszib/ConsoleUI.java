@@ -14,7 +14,6 @@ public class ConsoleUI {
         System.out.println("2. Wypisz zamówienia");
         System.out.println("3. Edytuj zamówienie");
         System.out.println("4. Usuń zamówienie");
-        System.out.println("5. Wyślij zamówienie na email");
         System.out.println("0. Wyjście");
         Scanner scanner = new Scanner(System.in);
         String line = scanner.nextLine();

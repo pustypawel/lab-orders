@@ -5,7 +5,6 @@ public enum UserCommand {
     PRINT_ALL("2"),
     EDIT("3"),
     DELETE("4"),
-    SEND_EMAIL("5"),
     EXIT("0"),
 
     UNKNOWN(null);
@@ -21,7 +20,11 @@ public enum UserCommand {
     }
 
     public static UserCommand parseUserCommand(String line) {
-        UserCommand[] values = UserCommand.values();
-        return null;
+        for (UserCommand command : UserCommand.values()) {
+            if (line.equalsIgnoreCase(command.representation)) {
+                return command;
+            }
+        }
+        return UNKNOWN;
     }
 }

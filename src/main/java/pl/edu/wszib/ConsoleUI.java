@@ -5,38 +5,35 @@ import java.util.Scanner;
 public class ConsoleUI {
 
     public void start() {
-        // 1. Utworz zamówienie
-        // 2. Wypisz zamówienia
-        // 3. Edytuj zamówienie
-        // 4. Usuń zamówienie
-        // 0. Wyjście
-        System.out.println("1. Utworz zamówienie");
-        System.out.println("2. Wypisz zamówienia");
-        System.out.println("3. Edytuj zamówienie");
-        System.out.println("4. Usuń zamówienie");
-        System.out.println("0. Wyjście");
-        Scanner scanner = new Scanner(System.in);
-        String line = scanner.nextLine();
-        UserCommand command = UserCommand.parseUserCommand(line);
-        switch (command) {
-            case CREATE:
-                createOrder();
-                break;
-            case EDIT:
-                editOrder();
-                break;
-            case DELETE:
-                deleteOrder();
-                break;
-            case PRINT_ALL:
-                printAll();
-                break;
-            case EXIT:
-                return;
-            case UNKNOWN:
-                unknown();
-                break;
-        }
+        do {
+            System.out.println("1. Utworz zamówienie");
+            System.out.println("2. Wypisz zamówienia");
+            System.out.println("3. Edytuj zamówienie");
+            System.out.println("4. Usuń zamówienie");
+            System.out.println("0. Wyjście");
+            Scanner scanner = new Scanner(System.in);
+            String line = scanner.nextLine();
+            UserCommand command = UserCommand.parseUserCommand(line);
+            switch (command) {
+                case CREATE:
+                    createOrder();
+                    break;
+                case EDIT:
+                    editOrder();
+                    break;
+                case DELETE:
+                    deleteOrder();
+                    break;
+                case PRINT_ALL:
+                    printAll();
+                    break;
+                case EXIT:
+                    return;
+                case UNKNOWN:
+                    unknown();
+                    break;
+            }
+        } while (true);
     }
 
     private void unknown() {

@@ -1,4 +1,4 @@
-package pl.edu.wszib;
+package pl.edu.wszib.order;
 
 public class Position {
     private Integer quantity;

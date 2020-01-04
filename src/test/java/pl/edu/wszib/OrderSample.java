@@ -1,5 +1,7 @@
 package pl.edu.wszib;
 
+import pl.edu.wszib.order.Order;
+
 public class OrderSample {
     public static Order sample() {
         Order order = new Order();

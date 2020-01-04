@@ -1,10 +1,11 @@
 package pl.edu.wszib;
 
 import org.junit.*;
+import pl.edu.wszib.order.Order;
+import pl.edu.wszib.order.Position;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.function.BiFunction;
 
 import static org.junit.Assert.*;
 
@@ -161,5 +162,4 @@ public class TddTest {
         // then: exception should be thrown
     }
 
-    // TODO add new functions to our system
 }

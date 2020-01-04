@@ -1,5 +1,7 @@
 package pl.edu.wszib;
 
+import pl.edu.wszib.order.Item;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 

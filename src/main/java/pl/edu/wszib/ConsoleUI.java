@@ -31,6 +31,14 @@ public class ConsoleUI {
         } while (shouldContinue);
     }
 
+    private void showMenu() {
+        System.out.println("1. Utworz zamówienie");
+        System.out.println("2. Wypisz zamówienie");
+        System.out.println("3. Edytuj zamówienie");
+        System.out.println("4. Usuń zamówienie");
+        System.out.println("0. Wyjście");
+    }
+
     private boolean handleCommand(UserCommand command, Scanner scanner) {
         switch (command) {
             case CREATE:
@@ -42,8 +50,8 @@ public class ConsoleUI {
             case DELETE:
                 deleteOrder();
                 break;
-            case PRINT_ALL:
-                printAll();
+            case PRINT:
+                printOrder(scanner);
                 break;
             case EXIT:
                 return false;
@@ -52,26 +60,6 @@ public class ConsoleUI {
                 break;
         }
         return true;
-    }
-
-    private void showMenu() {
-        System.out.println("1. Utworz zamówienie");
-        System.out.println("2. Wypisz zamówienia");
-        System.out.println("3. Edytuj zamówienie");
-        System.out.println("4. Usuń zamówienie");
-        System.out.println("0. Wyjście");
-    }
-
-    private void unknown() {
-        System.out.println("Unknown");
-    }
-
-    private void printAll() {
-        System.out.println("printAll");
-    }
-
-    private void deleteOrder() {
-        System.out.println("deleteOrder");
     }
 
     private void createOrder(Scanner scanner) {
@@ -126,8 +114,28 @@ public class ConsoleUI {
         } while (true);
     }
 
+
+    private void printOrder(Scanner scanner) {
+        System.out.println("Podaj identyfikator zamówiania: ");
+        String orderId = scanner.nextLine();
+        Order order = orderService.find(orderId);
+        if (order == null) {
+            System.out.println("Zamówienie o podanym identyfikatorze nie istnieje");
+        } else {
+            System.out.println("Zamówienie: " + order.getDescription());
+        }
+    }
+
+    private void deleteOrder() {
+        System.out.println("deleteOrder");
+    }
+
     private void editOrder() {
         System.out.println("editOrder");
+    }
+
+    private void unknown() {
+        System.out.println("Unknown");
     }
 
 }

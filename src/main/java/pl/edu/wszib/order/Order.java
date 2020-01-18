@@ -97,4 +97,17 @@ public class Order {
     public boolean hasPosition(Position position) {
         return positions.contains(position);
     }
+
+    public String getDescription() {
+        return toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id='" + id + '\'' +
+                ", positions=" + positions +
+                ", isClosed=" + isClosed +
+                '}';
+    }
 }

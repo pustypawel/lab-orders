@@ -2,7 +2,7 @@ package pl.edu.wszib;
 
 public enum UserCommand {
     CREATE("1"),
-    PRINT_ALL("2"),
+    PRINT("2"),
     EDIT("3"),
     DELETE("4"),
     EXIT("0"),

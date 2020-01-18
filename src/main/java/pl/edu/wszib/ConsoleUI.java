@@ -1,8 +1,6 @@
 package pl.edu.wszib;
 
-import pl.edu.wszib.order.Item;
-import pl.edu.wszib.order.Order;
-import pl.edu.wszib.order.Position;
+import pl.edu.wszib.order.*;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -15,6 +13,12 @@ public class ConsoleUI {
             new Item("Mazak", BigDecimal.valueOf(2), 10),
             new Item("Kabel USB", BigDecimal.valueOf(30), 1),
             new Item("Telefon", BigDecimal.valueOf(500), 3));
+
+    private final OrderService orderService;
+
+    public ConsoleUI(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
@@ -71,14 +75,16 @@ public class ConsoleUI {
     }
 
     private void createOrder(Scanner scanner) {
+        Order order = readOrder(scanner);
+        String orderId = orderService.create(order);
+        System.out.println("Identyfikator twojego zamówienia to: " + orderId);
+    }
+
+    private Order readOrder(Scanner scanner) {
         Order order = new Order();
         boolean stillAdding = true;
         do {
-            System.out.println("Wybierz przedmiot aby dodać go do zamówienia. Aby zakończyć tworzenie zamówienia naciśnij 0");
-            for (int i = 0; i < AVAILABLE_ITEMS.size(); i++) {
-                Item item = AVAILABLE_ITEMS.get(i);
-                System.out.println((i + 1) + ". " + item.getName() + "(" + item.getPrice() + ")");
-            }
+            printAvailableItems();
             String line = scanner.nextLine();
             try {
                 if (line.equals("0")) {
@@ -96,7 +102,15 @@ public class ConsoleUI {
                 System.out.println("Podana wartość nie jest liczbą");
             }
         } while (stillAdding);
+        return order;
+    }
 
+    private void printAvailableItems() {
+        System.out.println("Wybierz przedmiot aby dodać go do zamówienia. Aby zakończyć tworzenie zamówienia naciśnij 0");
+        for (int i = 0; i < AVAILABLE_ITEMS.size(); i++) {
+            Item item = AVAILABLE_ITEMS.get(i);
+            System.out.println((i + 1) + ". " + item.getName() + "(" + item.getPrice() + ")");
+        }
     }
 
     private Integer askQuantity(Scanner scanner, Item chosenItem) {

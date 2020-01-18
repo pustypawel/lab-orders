@@ -1,6 +1,4 @@
-package pl.edu.wszib;
-
-import pl.edu.wszib.order.Order;
+package pl.edu.wszib.order;
 
 public class OrderSample {
     public static Order sample() {

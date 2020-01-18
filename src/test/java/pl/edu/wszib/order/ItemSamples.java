@@ -1,4 +1,4 @@
-package pl.edu.wszib;
+package pl.edu.wszib.order;
 
 import pl.edu.wszib.order.Item;
 

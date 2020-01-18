@@ -1,6 +1,4 @@
-package pl.edu.wszib;
-
-import pl.edu.wszib.order.Position;
+package pl.edu.wszib.order;
 
 public class PositionSamples {
     public static Position sample() {

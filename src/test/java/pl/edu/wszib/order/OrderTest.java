@@ -1,15 +1,17 @@
-package pl.edu.wszib;
+package pl.edu.wszib.order;
 
 import org.junit.*;
 import pl.edu.wszib.order.Order;
+import pl.edu.wszib.order.OrderSample;
 import pl.edu.wszib.order.Position;
+import pl.edu.wszib.order.PositionSamples;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import static org.junit.Assert.*;
 
-public class TddTest {
+public class OrderTest {
 
     @Test
     public void shouldBeAbleToAddPositionToOrder() {

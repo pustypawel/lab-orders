@@ -6,7 +6,6 @@ public enum UserCommand {
     EDIT("3"),
     DELETE("4"),
     EXIT("0"),
-
     UNKNOWN(null);
 
     private final String representation;

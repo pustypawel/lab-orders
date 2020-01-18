@@ -10,13 +10,22 @@ public class InMemoryOrderRepository implements OrderRepository {
 
     @Override
     public String save(Order order) {
-        String orderId = UUID.randomUUID().toString();
-        ordersMap.put(orderId, order);
-        return orderId;
+        String id = order.getId();
+        if (id == null) {
+            id = UUID.randomUUID().toString();
+            order.setId(id);
+        }
+        ordersMap.put(id, order);
+        return id;
     }
 
     @Override
     public boolean exists(String orderId) {
         return ordersMap.containsKey(orderId);
+    }
+
+    @Override
+    public Order load(String orderId) {
+        return ordersMap.get(orderId);
     }
 }

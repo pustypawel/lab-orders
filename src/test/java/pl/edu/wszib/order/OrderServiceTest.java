@@ -29,4 +29,24 @@ public class OrderServiceTest {
         assertTrue(exists);
     }
 
+    @Test
+    public void shouldBeAbleToAddPositionToOrder() {
+        // given:
+        Position position = PositionSamples.sample();
+        Order order = OrderSample.sample();
+        String orderId = orderService.create(order);
+
+        // when:
+        orderService.addPosition(orderId, position);
+        orderService.addPosition(orderId, position);
+        orderService.addPosition(orderId, position);
+        orderService.addPosition(orderId, position);
+        orderService.addPosition(orderId, position);
+
+        // then:
+        Order newOrder = orderService.find(orderId);
+        boolean hasPosition = newOrder.hasPosition(position);
+        assertTrue(hasPosition);
+    }
+
 }

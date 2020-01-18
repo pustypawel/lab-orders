@@ -1,8 +1,17 @@
 package pl.edu.wszib;
 
+import pl.edu.wszib.order.Item;
+
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleUI {
+    private static final List<Item> availableItems = Arrays.asList(new Item("Pilot", BigDecimal.valueOf(20)),
+            new Item("Mazak", BigDecimal.valueOf(2)),
+            new Item("Kabel USB", BigDecimal.valueOf(30)),
+            new Item("Telefon", BigDecimal.valueOf(500)));
 
     public void start() {
         Scanner scanner = new Scanner(System.in);

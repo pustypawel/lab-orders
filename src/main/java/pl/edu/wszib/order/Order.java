@@ -6,8 +6,18 @@ import java.util.List;
 
 public class Order {
 
+    private String id;
+
     private final List<Position> positions = new ArrayList<>();
     private boolean isClosed;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public void addPosition(Position position) {
         validateIsNotClosed();
@@ -82,5 +92,9 @@ public class Order {
     private void validateIsModifiable(int line) {
         validateIsNotClosed();
         validateLine(line);
+    }
+
+    public boolean hasPosition(Position position) {
+        return positions.contains(position);
     }
 }

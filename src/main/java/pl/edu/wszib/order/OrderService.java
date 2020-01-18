@@ -14,4 +14,14 @@ public class OrderService {
     public boolean exists(String orderId) {
         return orderRepository.exists(orderId);
     }
+
+    public void addPosition(String orderId, Position position) {
+        Order order = orderRepository.load(orderId);
+        order.addPosition(position);
+        orderRepository.save(order);
+    }
+
+    public Order find(String orderId) {
+        return orderRepository.load(orderId);
+    }
 }
